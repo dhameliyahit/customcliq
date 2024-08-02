@@ -3,6 +3,7 @@ import axios from 'axios';
 import Preview from './Preview.jsx';
 
 const Home = () => {
+  const [loading,setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     profession: '',
@@ -28,30 +29,37 @@ const Home = () => {
 
 
   const handleChange = (e) => {
-    const { name, value, type, files } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: type === 'file' ? files[0] : value,
-    }));
+    const { name, value, files } = e.target;
+    if (files) {
+      setFormData({ ...formData, [name]: files[0] });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    alert("Form Submitted!");
-
-    // Uncomment the code below to enable form submission
-    // try {
-    //   const response = await axios.post('http://localhost:8080/update/new', formData, {
-    //     headers: {
-    //       'Content-Type': 'multipart/form-data'
-    //     }
-    //   });
-    //   alert("Request sent successfully");
-    //   console.log(response.data);
-    // } catch (error) {
-    //   console.error('Error submitting form', error);
-    // }
-  };
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      setLoading(true);
+      const data = new FormData();
+      for (const key in formData) {
+        data.append(key, formData[key]);
+      }
+  
+      try {
+        const response = await axios.post('http://localhost:5000/api/v1/data', data, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+        console.log(response.data);
+        alert("From submited successfully");
+      } catch (error) {
+        console.error(error);
+        alert("Somthing went wrong while from submitting.")
+      }
+      setLoading(false);
+    };
+  
 
   return (
     <>
@@ -375,7 +383,7 @@ const Home = () => {
                   />
                 </div>
                 <button type="submit" className="px-4 w-full py-2 font-medium text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
-                  Submit
+                  {loading ? "Submitting..." : "Submit"}
                 </button>
               </form>
             </main>
