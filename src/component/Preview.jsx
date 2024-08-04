@@ -1,6 +1,6 @@
 import React from 'react'
 import './preview.css'
-const Preview = ({formData}) => {
+const Preview = ({formData,gImg}) => {
     
     return (
         <>
@@ -195,16 +195,16 @@ const Preview = ({formData}) => {
                 {/* gallery section start */}
                 <div className="gallery">
                     <div className="image-grid">  
-                        <img src={formData.img1 ? URL.createObjectURL(formData.img1) : "https://cdn0030.qrcodechimp.com/qr/PROD/6464cf7c6a734a24226f7a53/fm/whatsapp_image_2024-07-14_at_141003_a8af41ca.jpg"} alt="Image 1" />
-                        <img src={formData.img2  ? URL.createObjectURL(formData.img2) :"https://cdn0030.qrcodechimp.com/qr/PROD/6464cf7c6a734a24226f7a53/fm/whatsapp_image_2024-07-14_at_141007_0500b6a4.jpg"} alt="Image 2" />
-                        <img src={formData.img3  ? URL.createObjectURL(formData.img3) :"https://cdn0030.qrcodechimp.com/qr/PROD/6464cf7c6a734a24226f7a53/fm/whatsapp_image_2024-07-14_at_141007_b944fb1c.jpg"} alt="Image 3" />
-                        <img src={formData.img4  ? URL.createObjectURL(formData.img4) :"https://cdn0030.qrcodechimp.com/qr/PROD/6464cf7c6a734a24226f7a53/fm/whatsapp_image_2024-07-14_at_141006_ac1295c3.jpg"} alt="Image 4" />
-                        <img src={formData.img5  ? URL.createObjectURL(formData.img5) :"https://cdn0030.qrcodechimp.com/qr/PROD/6464cf7c6a734a24226f7a53/fm/whatsapp_image_2024-07-14_at_141004_2fe40407.jpg"} alt="Image 5" />
-                        <img src={formData.img6  ? URL.createObjectURL(formData.img6) :"https://cdn0030.qrcodechimp.com/qr/PROD/6464cf7c6a734a24226f7a53/fm/whatsapp_image_2024-07-14_at_141000_e6b9b39a.jpg"} alt="Image 6" />
-                        <img src={formData.img7  ? URL.createObjectURL(formData.img7) :"https://cdn0030.qrcodechimp.com/qr/PROD/6464cf7c6a734a24226f7a53/fm/whatsapp_image_2024-07-14_at_141000_0fe0a7fa.jpg"} alt="Image 7" />
-                        <img src={formData.img8  ? URL.createObjectURL(formData.img8) :"https://cdn0030.qrcodechimp.com/qr/PROD/6464cf7c6a734a24226f7a53/fm/whatsapp_image_2024-07-14_at_140957_e7278612.jpg"} alt="Image 8" />
-                        <img src={formData.img9  ? URL.createObjectURL(formData.img9) :"https://cdn0030.qrcodechimp.com/qr/PROD/6464cf7c6a734a24226f7a53/fm/whatsapp_image_2024-07-14_at_140955_a12010c6.jpg"} alt="Image 9" />
-                        <img src={formData.img10  ? URL.createObjectURL(formData.img10) :"https://cdn0030.qrcodechimp.com/qr/PROD/6464cf7c6a734a24226f7a53/fm/whatsapp_image_2024-06-09_at_100409_40c4212f.jpg"} alt="Image 10" />
+                        <img src={gImg[0] ? URL.createObjectURL(gImg[0]) : "https://cdn0030.qrcodechimp.com/qr/PROD/6464cf7c6a734a24226f7a53/fm/whatsapp_image_2024-07-14_at_141003_a8af41ca.jpg"} alt="Image 1" />
+                        <img src={gImg[1]  ? URL.createObjectURL(gImg[1]) :"https://cdn0030.qrcodechimp.com/qr/PROD/6464cf7c6a734a24226f7a53/fm/whatsapp_image_2024-07-14_at_141007_0500b6a4.jpg"} alt="Image 2" />
+                        <img src={gImg[2]  ? URL.createObjectURL(gImg[2]) :"https://cdn0030.qrcodechimp.com/qr/PROD/6464cf7c6a734a24226f7a53/fm/whatsapp_image_2024-07-14_at_141007_b944fb1c.jpg"} alt="Image 3" />
+                        <img src={gImg[3]  ? URL.createObjectURL(gImg[3]) :"https://cdn0030.qrcodechimp.com/qr/PROD/6464cf7c6a734a24226f7a53/fm/whatsapp_image_2024-07-14_at_141006_ac1295c3.jpg"} alt="Image 4" />
+                        <img src={gImg[4]  ? URL.createObjectURL(gImg[4]) :"https://cdn0030.qrcodechimp.com/qr/PROD/6464cf7c6a734a24226f7a53/fm/whatsapp_image_2024-07-14_at_141004_2fe40407.jpg"} alt="Image 5" />
+                        <img src={gImg[5]  ? URL.createObjectURL(gImg[5]) :"https://cdn0030.qrcodechimp.com/qr/PROD/6464cf7c6a734a24226f7a53/fm/whatsapp_image_2024-07-14_at_141000_e6b9b39a.jpg"} alt="Image 6" />
+                        <img src={gImg[6]  ? URL.createObjectURL(gImg[6]) :"https://cdn0030.qrcodechimp.com/qr/PROD/6464cf7c6a734a24226f7a53/fm/whatsapp_image_2024-07-14_at_141000_0fe0a7fa.jpg"} alt="Image 7" />
+                        <img src={gImg[7]  ? URL.createObjectURL(gImg[7]) :"https://cdn0030.qrcodechimp.com/qr/PROD/6464cf7c6a734a24226f7a53/fm/whatsapp_image_2024-07-14_at_140957_e7278612.jpg"} alt="Image 8" />
+                        <img src={gImg[8]  ? URL.createObjectURL(gImg[8]) :"https://cdn0030.qrcodechimp.com/qr/PROD/6464cf7c6a734a24226f7a53/fm/whatsapp_image_2024-07-14_at_140955_a12010c6.jpg"} alt="Image 9" />
+                        <img src={gImg[9]  ? URL.createObjectURL(gImg[9]) :"https://cdn0030.qrcodechimp.com/qr/PROD/6464cf7c6a734a24226f7a53/fm/whatsapp_image_2024-06-09_at_100409_40c4212f.jpg"} alt="Image 10" />
                     </div>
                 </div>
                 {/* gallery section end */}

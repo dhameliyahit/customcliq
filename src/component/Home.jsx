@@ -15,22 +15,13 @@ const Home = () => {
     location: '',
     logo: null,
     profilePic: null,
-    img1: null,
-    img2: null,
-    img3: null,
-    img4: null,
-    img5: null,
-    img6: null,
-    img7: null,
-    img8: null,
-    img9: null,
-    img10: null,
     googlereview:'',
     facebook:'',
     instragram:'',
     youtube:''
   });
 
+  const [gImg,setGimg] = useState("");
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -41,6 +32,9 @@ const Home = () => {
     }
   };
 
+
+
+
     const handleSubmit = async (e) => {
       e.preventDefault();
       setLoading(true);
@@ -48,7 +42,15 @@ const Home = () => {
       for (const key in formData) {
         data.append(key, formData[key]);
       }
-  
+      if(gImg.length > 10){
+        toast.error("Img Max Upload is 10")
+      }
+      for(let i=0; i<gImg.length ; i++){
+        data.append(`gImg${i}`,gImg[i])
+      }
+
+      console.log(typeof gImg);
+      
       try {
         const response = await axios.post('http://localhost:5000/api/v1/data', data, {
           headers: {
@@ -227,189 +229,72 @@ const Home = () => {
                   )
                 }
                 {/* image upload section start */}
-                <div className="grid">
-                  <h1>Gallery Image</h1>
-                  <div className='border border-b-2 p-1'>
-                    <h1>Image 1</h1>
-                    <input
-                      onChange={handleChange}
-                      type="file"
-                      name="img1"
-                      className=" file:bg-indigo-50 file:text-indigo-700"
-                    />
-                    {
-                      formData.img1 && (
-                        <img style={{
-                          width: "100px",
-                          height: "auto",
-                          margin: "4px 0"
-                        }} src={URL.createObjectURL(formData.img1)} />
-                      )
-                    }
-                  </div>
-                  <div className='border border-b-2 p-1'>
-                    <h1>Image 2</h1>
-                    <input
-                      onChange={handleChange}
-                      type="file"
-                      name="img2"
-                      className=" file:bg-indigo-50 file:text-indigo-700"
-                    />
-                    {
-                      formData.img2 && (
-                        <img style={{
-                          width: "100px",
-                          height: "auto",
-                          margin: "4px 0"
-                        }} src={URL.createObjectURL(formData.img2)} />
-                      )
-                    }
-                  </div>
-                  <div className='border border-b-2 p-1'>
-                    <h1>Image 3</h1>
-                    <input
-                      onChange={handleChange}
-                      type="file"
-                      name="img3"
-                      className=" file:bg-indigo-50 file:text-indigo-700"
-                    />
-                    {
-                      formData.img3 && (
-                        <img style={{
-                          width: "100px",
-                          height: "auto",
-                          margin: "4px 0"
-                        }} src={URL.createObjectURL(formData.img3)} />
-                      )
-                    }
-                  </div>
-                  <div className='border border-b-2 p-1'>
-                    <h1>Image 4</h1>
-                    <input
-                      onChange={handleChange}
-                      type="file"
-                      name="img4"
-                      className=" file:bg-indigo-50 file:text-indigo-700"
-                    />
-                    {
-                      formData.img4 && (
-                        <img style={{
-                          width: "100px",
-                          height: "auto",
-                          margin: "4px 0"
-                        }} src={URL.createObjectURL(formData.img4)} />
-                      )
-                    }
-                  </div>
-                  <div className='border border-b-2 p-1'>
-                    <h1>Image 5</h1>
-                    <input
-                      onChange={handleChange}
-                      type="file"
-                      name="img5"
-                      className=" file:bg-indigo-50 file:text-indigo-700"
-                    />
-                    {
-                      formData.img5 && (
-                        <img style={{
-                          width: "100px",
-                          height: "auto",
-                          margin: "4px 0"
-                        }} src={URL.createObjectURL(formData.img5)} />
-                      )
-                    }
-                  </div>
-                  <div className='border border-b-2 p-1'>
-                    <h1>Image 6</h1>
-                    <input
-                      onChange={handleChange}
-                      type="file"
-                      name="img6"
-                      className=" file:bg-indigo-50 file:text-indigo-700"
-                    />
-                    {
-                      formData.img6 && (
-                        <img style={{
-                          width: "100px",
-                          height: "auto",
-                          margin: "4px 0"
-                        }} src={URL.createObjectURL(formData.img6)} />
-                      )
-                    }
-                  </div>
-                  <div className='border border-b-2 p-1'>
-                    <h1>Image 7</h1>
-                    <input
-                      onChange={handleChange}
-                      type="file"
-                      name="img7"
-                      className=" file:bg-indigo-50 file:text-indigo-700"
-                    />
-                    {
-                      formData.img7 && (
-                        <img style={{
-                          width: "100px",
-                          height: "auto",
-                          margin: "4px 0"
-                        }} src={URL.createObjectURL(formData.img7)} />
-                      )
-                    }
-                  </div>
-                  <div className='border border-b-2 p-1'>
-                    <h1>Image 8</h1>
-                    <input
-                      onChange={handleChange}
-                      type="file"
-                      name="img8"
-                      className=" file:bg-indigo-50 file:text-indigo-700"
-                    />
-                    {
-                      formData.img8 && (
-                        <img style={{
-                          width: "100px",
-                          height: "auto",
-                          margin: "4px 0"
-                        }} src={URL.createObjectURL(formData.img8)} />
-                      )
-                    }
-                  </div>
-                  <div className='border border-b-2 p-1'>
-                    <h1>Image 9</h1>
-                    <input
-                      onChange={handleChange}
-                      type="file"
-                      name="img9"
-                      className=" file:bg-indigo-50 file:text-indigo-700"
-                    />
-                    {
-                      formData.img9 && (
-                        <img style={{
-                          width: "100px",
-                          height: "auto",
-                          margin: "4px 0"
-                        }} src={URL.createObjectURL(formData.img9)} />
-                      )
-                    }
-                  </div>
-                  <div className='border border-b-2 p-1'>
-                    <h1>Image 10</h1>
-                    <input
-                      onChange={handleChange}
-                      type="file"
-                      name="img10"
-                      className=" file:bg-indigo-50 file:text-indigo-700"
-                    />
-                    {
-                      formData.img10 && (
-                        <img style={{
-                          width: "100px",
-                          height: "auto",
-                          margin: "4px 0"
-                        }} src={URL.createObjectURL(formData.img10)} />
-                      )
-                    }
-                  </div>
+                <div>
+                  <label htmlFor="gimg" className="block text-sm font-medium text-gray-700">Gallery Image's Upload</label>
+                  <input
+                    onChange={(e)=>setGimg(e.target.files)}
+                    type="file"
+                    name="gimg" multiple
+                    className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
+                  />
                 </div>
+                {gImg && (
+                  <>
+                    <h1>{gImg.length}</h1>
+                    <div className="grid grid-cols-2 gap-2 w-full my-5">  
+        <img 
+          src={gImg[0] ? URL.createObjectURL(gImg[0]) : ""} 
+          alt="Image 1" 
+          className="w-full h-72 rounded-lg shadow-md" 
+        />
+        <img 
+          src={gImg[1] ? URL.createObjectURL(gImg[1]) : ""} 
+          alt="Image 2" 
+          className="w-full h-72 rounded-lg shadow-md" 
+        />
+        <img 
+          src={gImg[2] ? URL.createObjectURL(gImg[2]) : ""} 
+          alt="Image 3" 
+          className="w-full h-72 rounded-lg shadow-md" 
+        />
+        <img 
+          src={gImg[3] ? URL.createObjectURL(gImg[3]) : ""} 
+          alt="Image 4" 
+          className="w-full h-72 rounded-lg shadow-md" 
+        />
+        <img 
+          src={gImg[4] ? URL.createObjectURL(gImg[4]) : ""} 
+          alt="Image 5" 
+          className="w-full h-72 rounded-lg shadow-md" 
+        />
+        <img 
+          src={gImg[5] ? URL.createObjectURL(gImg[5]) : ""} 
+          alt="Image 6" 
+          className="w-full h-72 rounded-lg shadow-md" 
+        />
+        <img 
+          src={gImg[6] ? URL.createObjectURL(gImg[6]) : ""} alt="Image 7" 
+          className="w-full h-72 rounded-lg shadow-md" 
+        />
+        <img 
+          src={gImg[7] ? URL.createObjectURL(gImg[7]) : ""} 
+          alt="Image 8" 
+          className="w-full h-72 rounded-lg shadow-md" 
+        />
+        <img 
+          src={gImg[8] ? URL.createObjectURL(gImg[8]) : ""} 
+          alt="Image 9" 
+          className="w-full h-72 rounded-lg shadow-md" 
+        />
+        <img 
+          src={gImg[9] ? URL.createObjectURL(gImg[9]) : ""} 
+          alt="Image 10" 
+          className="w-full h-72 rounded-lg shadow-md" 
+        />
+      </div>
+                  </>
+                )}
+                
                 {/* image upload section end */}
                 <div>
                   <label htmlFor="googlereview" className="block text-sm font-medium text-gray-700">googlereview</label>
@@ -430,7 +315,7 @@ const Home = () => {
           </div>
 
           <div className="w-full border max-h-screen overflow-y-auto md:w-1/2 p-4 bg-gray-100 rounded md:ml-4 mt-4 md:mt-0">
-            <Preview formData={formData} />
+            <Preview formData={formData} gImg={gImg} />
           </div>
         </div>
       </div>
