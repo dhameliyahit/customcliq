@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Preview from './Preview.jsx';
+import {toast} from 'react-hot-toast'
 
 const Home = () => {
   const [loading,setLoading] = useState(false);
@@ -24,7 +25,10 @@ const Home = () => {
     img8: null,
     img9: null,
     img10: null,
-    googlereview:''
+    googlereview:'',
+    facebook:'',
+    instragram:'',
+    youtube:''
   });
 
 
@@ -52,10 +56,10 @@ const Home = () => {
           },
         });
         console.log(response.data);
-        alert("From submited successfully");
+        toast.success("From submited successfully");
       } catch (error) {
         console.error(error);
-        alert("Somthing went wrong while from submitting.")
+        toast.error("Error while  submitting.");
       }
       setLoading(false);
     };
@@ -150,6 +154,42 @@ const Home = () => {
                     id="location"
                     value={formData.location}
                     placeholder="Enter Your Location"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="facebook" className="block text-sm font-medium text-gray-700">Facebook</label>
+                  <input
+                    onChange={handleChange}
+                    type="text"
+                    name="facebook"
+                    id="facebook"
+                    value={formData.facebook}
+                    placeholder="Enter Your Facebook url"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="instragram" className="block text-sm font-medium text-gray-700">Instragram</label>
+                  <input
+                    onChange={handleChange}
+                    type="text"
+                    name="instragram"
+                    id="instragram"
+                    value={formData.instragram}
+                    placeholder="Enter Your instragram profile link"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="youtube" className="block text-sm font-medium text-gray-700">Youtube</label>
+                  <input
+                    onChange={handleChange}
+                    type="text"
+                    name="youtube"
+                    id="youtube"
+                    value={formData.youtube}
+                    placeholder="Enter Your youtube channel link"
                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>

@@ -108,7 +108,7 @@ const Preview = ({formData}) => {
                 </div>
                 {/* instragram div start */}
                 <div className="instragram icons">
-                    <a href="https://www.instagram.com/naimish.official/" className="instragram icons">
+                    <a target='_blank' href={formData.instragram ? formData.instragram : "https://www.instagram.com/naimish.official/"} className="instragram icons">
                         <div className="left">
                             <img src="https://www.qrcodechimp.com/images/digitalCard/insta_icon@72x.png" alt="whatsapp" />
                             <div className="title">
@@ -122,7 +122,7 @@ const Preview = ({formData}) => {
                 {/* instragram div end */}
                 {/* facebook div start */}
                 <div className="facebook icons">
-                    <a href="https://www.instagram.com/naimish.official/" className="facebook icons">
+                    <a target='_blank' href={formData.facebook ? formData.facebook : "https://www.instagram.com/naimish.official/"} className="facebook icons">
                         <div className="left">
                             <img src="https://www.qrcodechimp.com/images/digitalCard/fb_icon@72x.png" alt="whatsapp" />
                             <div className="title">
@@ -135,7 +135,7 @@ const Preview = ({formData}) => {
                 </div>
                 {/* youtube div end */}
                 <div className="youtube icons">
-                    <a href="https://www.instagram.com/naimish.official/" className="youtube icons">
+                    <a target='_blank' href={formData.youtube ? formData.youtube : "https://www.instagram.com/naimish.official/"} className="youtube icons">
                         <div className="left">
                             <img src="https://www.qrcodechimp.com/images/digitalCard/youtube_icon@72x.png" alt="whatsapp" />
                             <div className="title">
