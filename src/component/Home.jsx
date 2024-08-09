@@ -21,7 +21,7 @@ const Home = () => {
     youtube:''
   });
 
-  const [gImg,setGimg] = useState("");
+  const [gImg, setGimg] = useState([]); 
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -31,9 +31,6 @@ const Home = () => {
       setFormData({ ...formData, [name]: value });
     }
   };
-
-
-
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -45,11 +42,9 @@ const Home = () => {
       if(gImg.length > 10){
         toast.error("Img Max Upload is 10")
       }
-      for(let i=0; i<gImg.length ; i++){
-        data.append(`gImg${i}`,gImg[i])
-      }
-
-      console.log(typeof gImg);
+      gImg.forEach((file, index) => {
+        data.append(`gImg`, file);
+      });
       
       try {
         const response = await axios.post('http://localhost:5000/api/v1/data', data, {
@@ -73,7 +68,7 @@ const Home = () => {
       <div className="flex items-start justify-center min-h-screen bg-gray-100 p-4">
         <div className="w-full max-w-3xl flex flex-col md:flex-row">
           <div className="w-full md:w-1/2 p-4 bg-white border border-gray-300 rounded shadow-md">
-            <main className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
+            <main className="bg-white p-8 rounded-lg w-full max-w-lg">
               <form className="space-y-6" onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
@@ -115,7 +110,7 @@ const Home = () => {
                   <label htmlFor="contactNumber" className="block text-sm font-medium text-gray-700">Contact Number</label>
                   <input
                     onChange={handleChange}
-                    type="text"
+                    type="number"
                     name="contactNumber"
                     id="contactNumber"
                     value={formData.contactNumber}
@@ -139,7 +134,7 @@ const Home = () => {
                   <label htmlFor="whatsApp" className="block text-sm font-medium text-gray-700">WhatsApp Link</label>
                   <input
                     onChange={handleChange}
-                    type="text"
+                    type="url"
                     name="whatsApp"
                     id="whatsApp"
                     value={formData.whatsApp}
@@ -151,7 +146,7 @@ const Home = () => {
                   <label htmlFor="location" className="block text-sm font-medium text-gray-700">Location</label>
                   <input
                     onChange={handleChange}
-                    type="text"
+                    type="url"
                     name="location"
                     id="location"
                     value={formData.location}
@@ -163,7 +158,7 @@ const Home = () => {
                   <label htmlFor="facebook" className="block text-sm font-medium text-gray-700">Facebook</label>
                   <input
                     onChange={handleChange}
-                    type="text"
+                    type="url"
                     name="facebook"
                     id="facebook"
                     value={formData.facebook}
@@ -175,7 +170,7 @@ const Home = () => {
                   <label htmlFor="instragram" className="block text-sm font-medium text-gray-700">Instragram</label>
                   <input
                     onChange={handleChange}
-                    type="text"
+                    type="url"
                     name="instragram"
                     id="instragram"
                     value={formData.instragram}
@@ -187,7 +182,7 @@ const Home = () => {
                   <label htmlFor="youtube" className="block text-sm font-medium text-gray-700">Youtube</label>
                   <input
                     onChange={handleChange}
-                    type="text"
+                    type="url"
                     name="youtube"
                     id="youtube"
                     value={formData.youtube}
@@ -198,7 +193,7 @@ const Home = () => {
                 <div>
                   <label htmlFor="logo" className="block text-sm font-medium text-gray-700">Logo Upload</label>
                   <input
-                    onChange={handleChange}
+                    onChange={(handleChange)}
                     type="file"
                     name="logo"
                     className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
@@ -229,78 +224,43 @@ const Home = () => {
                   )
                 }
                 {/* image upload section start */}
-                <div>
-                  <label htmlFor="gimg" className="block text-sm font-medium text-gray-700">Gallery Image's Upload</label>
-                  <input
-                    onChange={(e)=>setGimg(e.target.files)}
-                    type="file"
-                    name="gimg" multiple
-                    className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
-                  />
+                <div className="max-w-lg mx-auto mt-5">
+                  <label 
+                    htmlFor="gimg" 
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
+                    Gallery Images Upload
+                  </label>
+                  <input 
+                    type="file" 
+                    multiple 
+                    onChange={(e) => setGimg([...e.target.files])} 
+                    id="gimg"
+                    className="block file:p-2 file:rounded-md file:font-bold file:cursor-pointer  file:bg-indigo-50 file:text-indigo-700 p-3 w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-5"
+                    />
+                  {gImg.length > 0 && (
+                    <>
+                      <h1 className="text-lg font-semibold mb-3">{gImg.length} Images Uploaded</h1>
+                      <div className="grid grid-cols-2 gap-4">
+                        {gImg.map((file, index) => (
+                          <div key={index} className="w-full h-72 rounded-lg shadow-md overflow-hidden">
+                            <img 
+                              src={URL.createObjectURL(file)} 
+                              alt={`Image ${index + 1}`} 
+                              className="w-full h-full object-cover" 
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </>
+                  )}
                 </div>
-                {gImg && (
-                  <>
-                    <h1>{gImg.length}</h1>
-                    <div className="grid grid-cols-2 gap-2 w-full my-5">  
-        <img 
-          src={gImg[0] ? URL.createObjectURL(gImg[0]) : ""} 
-          alt="Image 1" 
-          className="w-full h-72 rounded-lg shadow-md" 
-        />
-        <img 
-          src={gImg[1] ? URL.createObjectURL(gImg[1]) : ""} 
-          alt="Image 2" 
-          className="w-full h-72 rounded-lg shadow-md" 
-        />
-        <img 
-          src={gImg[2] ? URL.createObjectURL(gImg[2]) : ""} 
-          alt="Image 3" 
-          className="w-full h-72 rounded-lg shadow-md" 
-        />
-        <img 
-          src={gImg[3] ? URL.createObjectURL(gImg[3]) : ""} 
-          alt="Image 4" 
-          className="w-full h-72 rounded-lg shadow-md" 
-        />
-        <img 
-          src={gImg[4] ? URL.createObjectURL(gImg[4]) : ""} 
-          alt="Image 5" 
-          className="w-full h-72 rounded-lg shadow-md" 
-        />
-        <img 
-          src={gImg[5] ? URL.createObjectURL(gImg[5]) : ""} 
-          alt="Image 6" 
-          className="w-full h-72 rounded-lg shadow-md" 
-        />
-        <img 
-          src={gImg[6] ? URL.createObjectURL(gImg[6]) : ""} alt="Image 7" 
-          className="w-full h-72 rounded-lg shadow-md" 
-        />
-        <img 
-          src={gImg[7] ? URL.createObjectURL(gImg[7]) : ""} 
-          alt="Image 8" 
-          className="w-full h-72 rounded-lg shadow-md" 
-        />
-        <img 
-          src={gImg[8] ? URL.createObjectURL(gImg[8]) : ""} 
-          alt="Image 9" 
-          className="w-full h-72 rounded-lg shadow-md" 
-        />
-        <img 
-          src={gImg[9] ? URL.createObjectURL(gImg[9]) : ""} 
-          alt="Image 10" 
-          className="w-full h-72 rounded-lg shadow-md" 
-        />
-      </div>
-                  </>
-                )}
-                
                 {/* image upload section end */}
                 <div>
                   <label htmlFor="googlereview" className="block text-sm font-medium text-gray-700">googlereview</label>
                   <input
                     onChange={handleChange}
-                    type="text"
+                    type="url"
                     name="googlereview"
                     value={formData.googlereview}
                     placeholder="Enter googlereview link"
