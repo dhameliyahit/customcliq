@@ -64,7 +64,8 @@ const Home = () => {
 
   return (
     <>
-      <h1 className='font-extrabold bg-gradient-to-r from-pink-400 text-transparent bg-clip-text to-slate-600 text-center text-3xl'>CustomCliQ</h1>
+      <h1 className='bg-gray-100 text-3xl text-center font-bold drop-shadow-md py-3'>CustomCliQ</h1>
+      <hr />
       <div className="flex items-start justify-center min-h-screen bg-gray-100 p-4">
         <div className="w-full max-w-3xl flex flex-col md:flex-row">
           <div className="w-full md:w-1/2 p-4 bg-white border border-gray-300 rounded shadow-md">
