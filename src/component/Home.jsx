@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Preview from './Preview.jsx';
 import {toast} from 'react-hot-toast'
+import {Link} from 'react-router-dom';
 
 const Home = () => {
   const [loading,setLoading] = useState(false);
@@ -287,6 +288,9 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Link to="/admin">
+        <p>Admin Page</p>
+      </Link>
     </>
   );
 };
