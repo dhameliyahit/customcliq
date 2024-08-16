@@ -288,7 +288,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Link to="/admin">
+      <Link to="/admin/login">
         <p>Admin Page</p>
       </Link>
     </>
