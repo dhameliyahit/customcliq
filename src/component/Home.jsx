@@ -5,6 +5,9 @@ import {toast} from 'react-hot-toast'
 
 const Home = () => {
   const [loading,setLoading] = useState(false);
+
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+
   const [formData, setFormData] = useState({
     name: '',
     profession: '',
@@ -32,34 +35,38 @@ const Home = () => {
     }
   };
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      setLoading(true);
-      const data = new FormData();
-      for (const key in formData) {
-        data.append(key, formData[key]);
-      }
-      if(gImg.length > 10){
-        toast.error("Img Max Upload is 10")
-      }
-      gImg.forEach((file, index) => {
-        data.append(`gImg`, file);
-      });
-      
-      try {
-        const response = await axios.post('http://localhost:5000/api/v1/data', data, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
-        console.log(response.data);
-        toast.success("From submited successfully");
-      } catch (error) {
-        console.error(error);
-        toast.error("Error while  submitting.");
-      }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    
+    if (gImg.length > 10) {
+      toast.error("Image Max Upload is 10");
       setLoading(false);
-    };
+      return;
+    }
+  
+    const data = new FormData();
+    Object.keys(formData).forEach(key => {
+      data.append(key, formData[key]);
+    });
+    gImg.forEach(file => data.append('gImg', file));
+  
+    try {
+      const response = await axios.post(`${BASE_URL}/api/v1/data`, data, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      console.log(response.data);
+      toast.success("Form submitted successfully");
+    } catch (error) {
+      console.error(error);
+      toast.error("Error while submitting.");
+    } finally {
+      setLoading(false);
+    }
+  };
+  
   
 
   return (

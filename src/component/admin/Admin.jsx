@@ -8,10 +8,14 @@ export const Admin = () => {
   
   const BASE_URL = import.meta.env.VITE_BASE_URL;
 
+  const [loading,setLoading] = useState(false);
+  
   const [data, setData] = useState([])
   const getAllData = async () => {
+    setLoading(true);
     const response = await axios.get(`${BASE_URL}/api/v1/all/data`);
     setData(response.data.user);
+    setLoading(false);
   }
 
   const [isModalOpen1, setIsModalOpen1] = useState(null);
@@ -84,7 +88,7 @@ export const Admin = () => {
 
   return (
     <>
-      <h1 className='text-3xl mx-5 my-3 font-bold border p-2'>Admin Panel </h1>
+      <h1 className='text-3xl mx-5 my-3 font-bold border p-2'>Admin Panel ({loading ? "Loading..." : "Data Get Successful"})</h1>
       <div className="overflow-x-auto border m-5">
         <table className="w-full bg-white border border-gray-200">
           <thead className="bg-gray-100 border-b">
