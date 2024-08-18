@@ -85,10 +85,15 @@ export const Admin = () => {
       hour12: true // Use 12-hour time format
     });
   } 
-
+  const handleRefesh = () =>{
+    setLoading(true)
+    location.reload();
+    setLoading(false);
+  }
   return (
     <>
       <h1 className='text-3xl mx-5 my-3 font-bold border p-2'>Admin Panel ({loading ? "Loading..." : "Data Get Successful"})</h1>
+      <button onClick={handleRefesh} className='btn mx-5 border bg-red-500 text-white font-mono hover:rounded-lg py-2 px-4'>{loading ? "refeshing . . ." : "Reload"}</button>
       <div className="overflow-x-auto border m-5">
         <table className="w-full bg-white border border-gray-200">
           <thead className="bg-gray-100 border-b">

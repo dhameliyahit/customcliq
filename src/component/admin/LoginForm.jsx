@@ -1,5 +1,6 @@
 // src/LoginForm.js
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import {useNavigate} from 'react-router-dom'
 const LoginForm = () => {
   const [username, setUsername] = useState('');
@@ -11,6 +12,10 @@ const LoginForm = () => {
     // Handle form submission
     if(username == "admin" && password == "admin"){
         navigate("/admin")
+        toast.success("Admin Login Successfull")
+    }else{
+      navigate("/")
+      toast.error("You Are not a Admin")
     }
     console.log('Username:', username);
     console.log('Password:', password);
