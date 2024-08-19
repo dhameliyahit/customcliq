@@ -96,9 +96,9 @@ export const Admin = () => {
       hour12: true // Use 12-hour time format
     });
   } 
-  const handleRefesh = () =>{
-    setLoading(true)
-    location.reload();
+  const handleRefesh = async() =>{
+    setLoading(true);
+   await getAllData();
     setLoading(false);
   }
   return (
