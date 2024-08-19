@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useCallback } from 'react';
 import axios from 'axios';
 import { Button, Modal } from 'antd';
 import Gimg from "./Gimg"
@@ -9,14 +9,25 @@ export const Admin = () => {
   const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   const [loading,setLoading] = useState(false);
-  
   const [data, setData] = useState([])
-  const getAllData = async () => {
+  const [error, setError] = useState(null);
+
+  const getAllData = useCallback(async () => {
     setLoading(true);
-    const response = await axios.get(`${BASE_URL}/api/v1/all/data`);
-    setData(response.data.user);
-    setLoading(false);
-  }
+    setError(null);
+    try {
+      const response = await axios.get(`${BASE_URL}/api/v1/all/data`);
+      setData(response.data.user);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    getAllData();
+  }, [getAllData]);
 
   const [isModalOpen1, setIsModalOpen1] = useState(null);
   const [isModalOpen2, setIsModalOpen2] = useState(null);
@@ -68,9 +79,9 @@ export const Admin = () => {
       toast.error("Somthing Went Wrong !")
     }
   }
-  useEffect(() => {
-    getAllData();
-  }, []);
+
+
+
 
   function formatDate(dateString) {
     const date = new Date(dateString);
