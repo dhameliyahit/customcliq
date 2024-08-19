@@ -289,39 +289,43 @@ const Home = () => {
         </div>
       </div>
       {/* footer section */}
-     <div className="footer items-center sm:block lg:flex lg:justify-between bg-black text-white py-8">
-  <div className="footer_logo flex flex-col items-center md:items-start md:flex-row">
-    <img className='ml-10 w-40 h-40' src="/customcliq.png" alt="customcliq logo" />
-  </div>
-  <div className="support_link flex mr-10 flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8">
-    <div className="contact_us">
-      <ul className="space-y-2 list-disc" style={{listStyleType:'circle'}}>
-        <li><a href="#" className="hover:text-gray-400 sm:text-center">Instagram</a></li>
-        <li><a href="#" className="hover:text-gray-400">customcliq@gmail.com</a></li>
-        <li><a href="#" className="hover:text-gray-400">Facebook</a></li>
-        <li><a href="#" className="hover:text-gray-400">Telephone +918989898</a></li>
-      </ul>
-    </div>
-    <div className="follow_us">
-      <ul className="space-y-2" style={{listStyleType:'circle'}}>
-        <li><a href="#" className="hover:text-gray-400">Instagram</a></li>
-        <li><a href="#" className="hover:text-gray-400">Facebook</a></li>
-        <li><a href="#" className="hover:text-gray-400">LinkedIn</a></li>
-      </ul>
-    </div>
-    <div className="team">
-      <ul className="space-y-2" style={{listStyleType:'circle'}}>
-        <li><a href="#" className="hover:text-gray-400 text-left">Mr. Ashok</a></li>
-        <li><a href="#" className="hover:text-gray-400 text-left">Mr. Nimish</a></li>
-        <li><a href="#" className="hover:text-gray-400">Mr. Aryan</a></li>
-      </ul>
-      <Link to="/admin/login">
-        <p className="mt-4 text-gray-500">Restricted Access</p>
-      </Link>
-    </div>
-  </div>
-</div>
+      <div className="footer bg-black text-white py-8 px-4">
+      <div className="container mx-auto flex flex-col lg:flex-row lg:justify-between items-center">
+        {/* Logo Section */}
+        <div className="footer_logo mb-6 lg:mb-0 flex flex-col items-center lg:items-start lg:flex-row">
+          <img className='w-32 h-32 lg:w-40 lg:h-40' src="/customcliq.png" alt="customcliq logo" />
+        </div>
 
+        {/* Links Section */}
+        <div className="support_link flex flex-col sm:flex-row sm:space-y-8 lg:space-x-8">
+          <div className="contact_us mb-6 sm:mb-0">
+            <ul className="space-y-2 list-disc list-inside text-center sm:text-left">
+              <li><a href="#" className="hover:text-gray-400">Instagram</a></li>
+              <li><a href="mailto:customcliq@gmail.com" className="hover:text-gray-400">customcliq@gmail.com</a></li>
+              <li><a href="#" className="hover:text-gray-400">Facebook</a></li>
+              <li><a href="#" className="hover:text-gray-400">Telephone +918989898</a></li>
+            </ul>
+          </div>
+          <div className="follow_us mb-6 sm:mb-0">
+            <ul className="space-y-2 list-disc list-inside text-center sm:text-left">
+              <li><a href="#" className="hover:text-gray-400">Instagram</a></li>
+              <li><a href="#" className="hover:text-gray-400">Facebook</a></li>
+              <li><a href="#" className="hover:text-gray-400">LinkedIn</a></li>
+            </ul>
+          </div>
+          <div className="team">
+            <ul className="space-y-2 list-disc list-inside text-center sm:text-left">
+              <li><a href="#" className="hover:text-gray-400">Mr. Ashok</a></li>
+              <li><a href="#" className="hover:text-gray-400">Mr. Nimish</a></li>
+              <li><a href="#" className="hover:text-gray-400">Mr. Aryan</a></li>
+            </ul>
+            <Link to="/admin/login">
+              <p className="mt-4 text-gray-500 text-center">Restricted Access</p>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
     </>
   );
 };

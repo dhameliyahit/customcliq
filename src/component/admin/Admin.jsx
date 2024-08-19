@@ -72,7 +72,7 @@ export const Admin = () => {
       console.log(response.data);
       toast.success("Record Delete Successfully");
       setTimeout(()=>{
-        location.reload();
+        getAllData();
       },2000)
     } catch (error) {
       console.log(error);
