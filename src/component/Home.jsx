@@ -299,25 +299,20 @@ const Home = () => {
         {/* Links Section */}
         <div className="support_link flex flex-col sm:flex-row sm:space-y-8 lg:space-x-8">
           <div className="contact_us mb-6 sm:mb-0">
-            <ul className="space-y-2 list-disc list-inside text-center sm:text-left">
-              <li><a href="#" className="hover:text-gray-400">Instagram</a></li>
-              <li><a href="mailto:customcliq@gmail.com" className="hover:text-gray-400">customcliq@gmail.com</a></li>
-              <li><a href="#" className="hover:text-gray-400">Facebook</a></li>
-              <li><a href="#" className="hover:text-gray-400">Telephone +918989898</a></li>
-            </ul>
+                    {/* supporting classes */}
           </div>
           <div className="follow_us mb-6 sm:mb-0">
             <ul className="space-y-2 list-disc list-inside text-center sm:text-left">
-              <li><a href="#" className="hover:text-gray-400">Instagram</a></li>
-              <li><a href="#" className="hover:text-gray-400">Facebook</a></li>
-              <li><a href="#" className="hover:text-gray-400">LinkedIn</a></li>
+              <li><a href="https://www.instagram.com/customcliq/" target='_blank' className="hover:text-gray-400">Instagram</a></li>
+              <li><a href="https://www.linkedin.com/company/customcliq/about/" target='_blank' className="hover:text-gray-400">LinkedIn</a></li>
+              <li><a href="mailto:customcliq@gmail.com" className="hover:text-gray-400">customcliq@gmail.com</a></li>
             </ul>
           </div>
           <div className="team">
             <ul className="space-y-2 list-disc list-inside text-center sm:text-left">
-              <li><a href="#" className="hover:text-gray-400">Mr. Ashok</a></li>
-              <li><a href="#" className="hover:text-gray-400">Mr. Nimish</a></li>
-              <li><a href="#" className="hover:text-gray-400">Mr. Aryan</a></li>
+              <li><a href="https://www.linkedin.com/in/ashok-mangukiya-864b7a19b/" target="_blank" className="hover:text-gray-400">Mr. Ashok</a></li>
+              <li><a href="https://www.linkedin.com/in/naimish-kajavadara/"  target='_blank' className="hover:text-gray-400">Mr. Nimish</a></li>
+              <li><a href="https://www.linkedin.com/in/aryankalekar/" target='_blank' className="hover:text-gray-400">Mr. Aryan</a></li>
             </ul>
             <Link to="/admin/login">
               <p className="mt-4 text-gray-500 text-center">Restricted Access</p>
