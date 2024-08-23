@@ -277,7 +277,7 @@ const Home = () => {
                   />
                 </div>
                 <button type="submit" className="px-4 w-full py-2 font-medium text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
-                  {loading ? "Submitting..." : "Submit"}
+                  {loading ? "Please Wait for 2 min ..." : "Submit"}
                 </button>
               </form>
             </main>
